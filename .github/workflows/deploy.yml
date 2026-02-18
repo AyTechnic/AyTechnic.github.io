@@ -20,13 +20,18 @@ jobs:
 
           git clone https://x-access-token:${{ secrets.PAGES_TOKEN }}@github.com/AyTechnic/AyTechnic.github.io.git pages
 
-          rsync -av --delete \
-            --exclude '.git' \
-            ./ pages/
+          rm -rf pages/*
+
+          cp -r * pages/
 
           cd pages
 
-          git add .
-          git commit -m "Auto deploy from AyVPN-Site" || echo "No changes"
+          rm -rf .git
 
-          git push
+          git init
+          git remote add origin https://x-access-token:${{ secrets.PAGES_TOKEN }}@github.com/AyTechnic/AyTechnic.github.io.git
+
+          git add .
+          git commit -m "Auto deploy site"
+
+          git push -f origin main
