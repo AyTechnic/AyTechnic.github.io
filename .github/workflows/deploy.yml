@@ -1,4 +1,4 @@
-name: Deploy Site to GitHub Pages Repo
+name: Deploy Site to Pages Repo
 
 on:
   push:
@@ -10,28 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Source Repo
+      - name: Checkout Source
         uses: actions/checkout@v4
 
-      - name: Deploy to Pages Repository
+      - name: Deploy to Pages Repo
+        env:
+          TOKEN: ${{ secrets.PAGES_TOKEN }}
         run: |
           git config --global user.name "AyTechnic"
           git config --global user.email "actions@github.com"
 
-          git clone https://x-access-token:${{ secrets.PAGES_TOKEN }}@github.com/AyTechnic/AyTechnic.github.io.git pages
+          git clone https://x-access-token:$TOKEN@github.com/AyTechnic/AyTechnic.github.io.git pages
 
-          rm -rf pages/*
-
-          cp -r * pages/
+          rsync -av --delete --exclude='.git' ./ pages/
 
           cd pages
 
-          rm -rf .git
-
-          git init
-          git remote add origin https://x-access-token:${{ secrets.PAGES_TOKEN }}@github.com/AyTechnic/AyTechnic.github.io.git
-
           git add .
-          git commit -m "Auto deploy site"
+          git commit -m "Auto deploy from private repo" || echo "No changes"
 
-          git push -f origin main
+          git push
