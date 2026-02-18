@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ay VPN - shammay.ir</title>
+    <link rel="icon" type="image/png" href="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FAy-VPN-Plus-510x510.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@33.003/Vazirmatn-Variable-font-face.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<script async src="https://www-8.shammay.site/widget/widget.js" data-id="r4-widget-connection"></script>
+<script async src="https://shammay.ir/Ay_Reflect4_widget.js" data-id="r4-widget-connection"></script>
+    <style>
+        /* === Base and Font Styles === */
+        body {
+            font-family: 'Vazirmatn', Inter, sans-serif;
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* === Animated Background & Particles === */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+        @keyframes particle-float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        .bg-animation {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.3;
+        }
+        .bg-animation::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, #6366f1 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #8b5cf6 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #06b6d4 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        .particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
+        }
+        .particle {
+            position: absolute; width: 4px; height: 4px; background: #06b6d4;
+            border-radius: 50%; animation: particle-float 15s infinite linear;
+        }
+
+        /* === Theme Body Styles === */
+        .dark body {
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+            color: #f8fafc;
+        }
+        .light body {
+            background: linear-gradient(135deg, #f0f4f8 0%, #dfe7ef 50%, #e6edf5 100%);
+            color: #1e293b;
+        }
+        
+        /* === Glass-Box Style === */
+        .glass-box {
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border-radius: 1.25rem;
+            border: 1px solid transparent; /* Prepare for border changes */
+        }
+        .dark .glass-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .light .glass-box {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(200, 210, 230, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .glass-box:hover {
+            transform: translateY(-5px);
+            border-color: #00BFFF;
+        }
+        
+        /* === Highlight Style for Matching OS in "All" Mode === */
+        .highlight-os-match {
+            border-color: #ef4444 !important; /* Red-500 */
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3) !important;
+        }
+        
+        .app-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.6s;
+            z-index: 2;
+        }
+        .app-card:hover::before {
+            left: 100%;
+        }
+
+        .national-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.1rem;
+            z-index: 5;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 3px rgba(0,0,0,0.5));
+        }
+        
+        /* === Input Area Styles === */
+        .modern-title {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background-image: linear-gradient(135deg, #818cf8, #38bdf8);
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -moz-text-fill-color: transparent;
+            text-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+        }
+        .modern-title i {
+            margin-left: 0.5rem;
+        }
+        .light .modern-title {
+             background-image: linear-gradient(135deg, #4f46e5, #0891b2);
+        }
+        
+        .input-area {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .input-wrapper {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.25rem;
+            border-radius: 0.75rem;
+        }
+        .dark .input-wrapper { background-color: rgba(0,0,0,0.2); }
+        .light .input-wrapper { background-color: rgba(255,255,255,0.7); }
+
+        .input-field {
+            white-space: nowrap;
+            overflow-x: auto;
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 0.75rem;
+            flex-grow: 1;
+        }
+
+        .input-action-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #9ca3af;
+            transition: color 0.2s ease, transform 0.2s ease;
+            padding: 0.5rem;
+            flex-shrink: 0;
+            border-radius: 0.5rem;
+        }
+        .input-action-button:hover {
+            color: #f8fafc;
+            transform: scale(1.1);
+        }
+        #copy-json-link-button {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .light .input-action-button {
+             color: #6b7280;
+        }
+        .light .input-action-button:hover {
+            color: #1e293b;
+        }
+        #json-link-output { cursor: pointer; }
+
+        /* === NEW Swiper/Banner Styles === */
+        #banner-slider-container {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        #banner-slider {
+            width: 100%;
+            height: 250px; /* Fixed height for the slider */
+            border-radius: 1.25rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            color: white; /* Default text color for banners */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Swiper Pagination Styling (The Dots) */
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #cbd5e1; /* Gray for inactive */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        .swiper-pagination-bullet-active {
+            background: #3b82f6; /* Blue for active */
+            width: 25px;
+            border-radius: 5px;
+            opacity: 1;
+        }
+        .swiper-pagination {
+            bottom: -30px !important; /* Move pagination below the slider */
+        }
+        .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+            top: auto !important;
+        }
+
+        /* Banner 1: Official Website */
+        .banner-1 {
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+        }
+        .dark .banner-1 {
+            background: linear-gradient(to right, #1E3A8A, #4C1D95);
+        }
+        .banner-1 .official-link { background-color: white; color: #3B82F6; }
+        .dark .banner-1 .official-link { background-color: #e2e8f0; color: #1E3A8A; }
+        .banner-1 .text-primary, .banner-1 .text-secondary { color: white !important; }
+
+        /* Banner 2: Telegram Bot */
+        .banner-2 {
+            background-image: url('https://shammay-ir.s3.ir-thr-at1.arvanstorage.ir/Header/webp/Croped/Header-Light.webp'); /* Placeholder Image */
+            transition: background-color 0.3s ease;
+            background-color: #0088CC;
+        }
+        .dark .banner-2 {
+            background-image: url('https://shammay-ir.s3.ir-thr-at1.arvanstorage.ir/Header/webp/Croped/Header-Light.webp'); /* Placeholder Image */
+            background: linear-gradient(to right, #0088CC, #007BFF);
+        }
+        .banner-2 .official-link { background-color: #fff; color: #0088CC; }
+
+        /* Banner 3: Buy Subscription */
+        .banner-3 {
+            background-image: url('https://shammay-ir.s3.ir-thr-at1.arvanstorage.ir/Header/webp/Croped/Header-Light.webp'); /* Placeholder Image */
+            background: linear-gradient(to right, #0088CC, #10B981);
+        }
+        .dark .banner-3 {
+            background-image: url('https://shammay-ir.s3.ir-thr-at1.arvanstorage.ir/Header/webp/Croped/Header-Dark.webp'); /* Placeholder Image */
+            background: linear-gradient(to right, #1E3A8A, #10B981);
+        }
+        .banner-3 .official-link { background-color: #fff; color: #10B981; }
+
+
+        /* General Slider Content Styles */
+        .swiper-slide .text-primary-white { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; color: white !important; }
+        .swiper-slide .text-secondary-white { font-size: 1.125rem; font-weight: 500; margin-bottom: 1.5rem; color: white !important; }
+        .swiper-slide .official-link {
+            font-weight: bold; padding: 0.75rem 2rem; border-radius: 9999px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease; background-color: white;
+        }
+        .banner-1 .official-link { color: #3B82F6; }
+        .banner-2 .official-link { color: #0088CC; }
+        .banner-3 .official-link { color: #10B981; }
+        .swiper-slide .official-link:hover { transform: scale(1.05); }
+
+
+        .theme-toggle-header {
+            position: absolute; top: 1rem; left: 1.3rem; z-index: 20;
+            width: 48px; height: 48px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* === Search and Filter Box Styles === */
+        #search-filter-box {
+            display: flex; 
+            flex-direction: row-reverse; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        #search-input { border: none !important; outline: none !important; background-color: transparent !important; box-shadow: none !important; padding-right: 0 !important; }
+        
+        /* === Toggle Switch Styles for OS Filter (New) === */
+        .os-toggle-switch-bg {
+            width: 40px; 
+            height: 24px;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .dark .os-toggle-switch-bg {
+            background-color: #6b7280; /* Inactive: Gray */
+        }
+        .light .os-toggle-switch-bg {
+            background-color: #9ca3af; /* Inactive: Light Gray */
+        }
+        
+        .os-toggle-switch-handle {
+            right: 2px; /* Handle position (RTL: right side is unchecked) */
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: #f8fafc; /* White handle */
+            z-index: 10;
+        }
+
+        .os-toggle-checkbox:checked + .os-toggle-switch-bg {
+            background-color: #10b981; /* Active: Emerald Green */
+        }
+        .os-toggle-checkbox:checked + .os-toggle-switch-bg + .os-toggle-switch-handle {
+            transform: translateX(-16px); /* Move left (RTL: from right to left) */
+        }
+        
+        /* General Filter Label style */
+        .os-toggle-container span {
+            color: #9ca3af;
+        }
+        .light .os-toggle-container span {
+             color: #6b7280;
+        }
+
+
+        /* === Other Styles (Preserved & Corrected) === */
+        @keyframes floatAnimation { 0%, 100% { transform: translateX(-50%) translateY(-6px); } 50% { transform: translateX(-50%) translateY(6px); } }
+        .header-container { position: relative; height: 240px; background-size: cover; background-repeat: no-repeat; background-position: center; transition: background-image 0.3s ease; overflow: visible; width: 100%; margin-bottom: 1%; }
+        .dark .header-container { background-image: url('https://shammay-ir.s3.ir-thr-at1.arvanstorage.ir/Header%2Fwebp%2FCroped%2FHeader-Dark.webp'); }
+        .light .header-container { background-image: url('https://shammay-ir.s3.ir-thr-at1.arvanstorage.ir/Header%2Fwebp%2FCroped%2FHeader-Light.webp'); }
+        .header-logo { position: absolute; top: 110px; left: 50%; animation: floatAnimation 6s ease-in-out infinite; z-index: 10; width: 150px; height: auto; }
+        .dark .text-primary { color: #e2e8f0; } 
+        .light .text-primary { color: #1e293b; } 
+        .dark .text-secondary { color: #a0aec0; }
+        .light .text-secondary { color: #334155; }
+        .dark .input-field { color: #fcd34d; }
+        .light .input-field { color: #4f46e5; }
+
+        .dark .footer-bg { background-color: rgba(26, 32, 44, 0.5); }
+        .light .footer-bg { background: rgba(255, 255, 255, 0.8); }
+
+        .social-icon { font-size: 1.8rem; transition: color 0.3s ease, transform 0.2s ease; }
+        .social-icon:hover { transform: translateY(-3px); }
+        .social-icon.telegram:hover { color: #0088cc; } .social-icon.instagram:hover { color: #E1306C; }
+        .social-icon.facebook:hover { color: #3b5998; } .social-icon.github:hover { color: #4CAF50; }
+        .social-icon.website:hover { color: #007bff; }
+
+        .button-group { display: flex; justify-content: center; width: 100%; max-width: 320px; margin: 0 auto; position: relative; }
+        .button-group > * { transition: all 0.3s ease; }
+        .download-button, .add-button, .version-toggle-button, .control-toggle-button, .copy-dropdown-toggle, .download-toggle-button { padding: 0.75rem 0; font-weight: bold; color: white; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); display: inline-flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; }
+        .version-toggle-button { background: linear-gradient(45deg, #6B7280, #9CA3AF); flex-grow: 0.5; border-top-right-radius: 9999px; border-bottom-right-radius: 9999px; }
+        .control-toggle-button { background: linear-gradient(45deg, #f87171, #ef4444); flex-grow: 0.5; border-radius: 0; }
+        .copy-dropdown-toggle { background: linear-gradient(45deg, #3B82F6, #60A5FA); flex-grow: 1; border-top-left-radius: 9999px; border-bottom-left-radius: 9999px; }
+        .download-button, .download-toggle-button { background: linear-gradient(45deg, #4CAF50, #8BC34A); border-radius: 0; flex-grow: 1.5; }
+        .add-button { background: linear-gradient(45deg, #3B82F6, #60A5FA); flex-grow: 1; border-top-left-radius: 9999px; border-bottom-left-radius: 9999px; }
+        
+        .dropdown-menu { position: absolute; backdrop-filter: blur(8px); border-radius: 0.75rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); z-index: 1000; min-width: 180px; right: 0; bottom: 100%; margin-bottom: 0.5rem; overflow: hidden; }
+        .dark .dropdown-menu { background-color: rgba(30, 41, 59, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .light .dropdown-menu { background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(0,0,0,0.1); }
+        .dropdown-menu a { display: flex; align-items: center; padding: 0.75rem 1rem; text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; }
+        .dropdown-menu a i { margin-left: 0.75rem; width: 20px; text-align: center; }
+        .dark .dropdown-menu a:hover { background-color: rgba(255, 255, 255, 0.05); }
+        .light .dropdown-menu a:hover { background-color: rgba(0, 0, 0, 0.05); }
+        
+        #ayvpnx-copy-menu {
+            right: auto;
+            left: 0;
+            min-width: 120px;
+        }
+        #ayvpnx-copy-menu a {
+            justify-content: center;
+        }
+        
+        /* Custom context menu for Ay VPN X */
+        #ayvpnx-context-menu {
+            position: absolute;
+            top: 140px;
+            right: 20%;
+            width: 130px;
+            z-index: 100;
+            background-color: rgba(25, 35, 55, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            transition: opacity 0.2s, transform 0.2s;
+            transform-origin: top right;
+        }
+         #ayvpnx-context-menu.hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+        #ayvpnx-context-menu a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #e2e8f0;
+            transition: background-color 0.2s;
+        }
+        #ayvpnx-context-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        #ayvpnx-context-menu i {
+            color: #94a3b8;
+        }
+
+        /* OS Icons & Colors (Corrected Section) */
+        .dark .os-windows, .light .os-windows { color: #39A3F1; } 
+        .dark .os-linux, .light .os-linux { color: #FFDE6A; } 
+        .dark .os-android, .light .os-android { color: #69FAB3; } 
+        .dark .os-apple, .light .os-apple { color: #00A6CE; }
+        .os-icons-list { display: flex; justify-content: center; gap: 0.75rem; margin-top: 0.5rem; margin-bottom: 1rem; align-items: center; }
+        .os-icons-list i { font-size: 1.4rem; }
+        .dark .os-icons-list i { color: #6b7280; }
+        .light .os-icons-list i { color: #9ca3af; }
+        .os-icons-list .os-main { font-size: 1.8rem; }
+        .os-icons-list .os-windows.os-main { color: #0078D4; }
+        .os-icons-list .os-linux.os-main { color: #FCC624; }
+        .os-icons-list .os-android.os-main { color: #3DDC84; }
+        .os-icons-list .os-apple.os-main { color: #00A6CE; }
+        
+        /* Corrected Apple Color in Dropdowns */
+        .dropdown-menu a:has(.os-apple) { color: #00A6CE; }
+        .dropdown-menu a .os-apple { color: #00A6CE; }
+        .dark .dropdown-menu a:has(.os-apple):hover { background-color: rgba(0, 166, 206, 0.1); }
+        .light .dropdown-menu a:has(.os-apple):hover { background-color: rgba(0, 166, 206, 0.1); }
+        
+        .app-logo, .app-name { cursor: pointer; }
+        
+        .copy-toast { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(22, 163, 74, 0.9); color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; z-index: 10; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; white-space: nowrap; }
+        .error-toast { background-color: rgba(239, 68, 68, 0.9); }
+        .copy-toast.show { opacity: 1; visibility: visible; }
+
+        .speedtest-container { width: 100%; height: 400px; border: none; border-radius: 1rem; overflow: hidden; }
+        .speedtest-tab { padding: 0.5rem 0; border-radius: 9999px; border: 1px solid transparent; cursor: pointer; transition: all 0.3s ease; font-weight: 600; flex-grow: 1; }
+        .dark .speedtest-tab { color: #a0aec0; }
+        .light .speedtest-tab { color: #00BFFF; }
+        .speedtest-tab.active { background-color: #60A5FA; color: #1a202c; box-shadow: 0 4px 14px 0 rgba(96, 165, 250, 0.3); }
+        .dark #search-input { background-color: rgba(0,0,0,0.2); }
+        .light #search-input { background-color: rgba(255,255,255,0.7); color: #1e293b; }
+        .input-field::placeholder, #search-input::placeholder { color: #6b7280; }
+
+        .text-green-400 { color: #4ade80; }
+        .text-red-400 { color: #f87171; }
+        .dark .text-yellow-400 { color: #facc15; }
+        .light .text-yellow-400 { color: #eab308; }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <header class="header-container relative w-full flex justify-center items-center">
+        <button id="theme-toggle" class="theme-toggle-header bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun" style="display: none;"></i>
+        </button>
+        <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2FAy%20VPN%20Plus-510x510.webp" alt="Ay VPN Logo" class="header-logo">
+    </header>
+
+    <main class="flex-grow container mx-auto p-6 md:p-12">
+        <div id="banner-slider-container">
+            <div id="banner-slider" class="swiper shadow-xl">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide banner-1">
+                        <h3 class="text-primary-white">ورود به وب سایت</h3>
+                        <p class="text-secondary-white">خرید، تمدید، مشاوره قبل از خرید و ...</p>
+                        <a href="https://shaammy.ir" target="_blank" class="official-link inline-block hover:scale-105 transition-all duration-300">
+                            shammay.ir <i class="fas fa-external-link-alt mr-2"></i>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide banner-2">
+                        <h3 class="text-primary-white">ربات تلگرام</h3>
+                        <p class="text-secondary-white">سفارش و پشتیبانی سریع از طریق ربات</p>
+                        <a href="https://t.me/AyVPN_Bot" target="_blank" class="official-link inline-block hover:scale-105 transition-all duration-300">
+                            AyVPN_Bot@<i class="fab fa-telegram-plane mr-2"></i>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide banner-3">
+                        <h3 class="text-primary-white">خرید اشتراک ویژه</h3>
+                        <p class="text-secondary-white">پشتیبانی از پروتکل‌های روز و سرعت بالا</p>
+                        <a href="https://shop.shaammy.ir" target="_blank" class="official-link inline-block hover:scale-105 transition-all duration-300">
+                            خرید اشتراک <i class="fas fa-shopping-cart mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        
+            <a href="https://my.shammay.ir" target="_self"
+   class="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 
+          text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-900/40 
+          transition-all transform hover:scale-[1.02] active:scale-95 
+          flex justify-center items-center gap-2">
+
+    <span>ورود به پنل کاربری</span>
+
+    <!-- User Dashboard Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user user-icon${isSelected}" data-users="${i}"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </a>
+
+        <div class="glass-box p-6 rounded-2xl mt-9 mb-6 text-center">
+            <h2 class="text-3xl font-extrabold mb-4 text-primary">چطور وصل بشم؟</h2>
+            <p class="text-lg text-secondary">
+                برای اتصال، ابتدا لینک سابسکریپشن خود را در کادر زیر وارد کنید. سپس، می‌توانید به برنامه مورد نظر خود با یک کلیک ساده، اشتراک خود را اضافه نمایید.
+            </p>
+        </div>
+
+        <div class="glass-box p-4 md:p-6 rounded-2xl mb-12">
+            <div class="input-area w-full">
+                 <h3 class="modern-title"><i class="fas fa-link"></i>آدرس سابسکریپشن شما</h3>
+                <div class="input-wrapper">
+                    <button id="paste-from-clipboard-button" class="input-action-button" title="جایگذاری از کلیپ‌بورد">
+                        <i class="fas fa-paste"></i>
+                    </button>
+                     <input type="url" id="subscription-url" class="input-field"
+                           placeholder="مثال: https://orj.shammay.ir:8688/sub/your-name"
+                           value="" oninput="handleInputChange()">
+                </div>
+                <div id="json-converter-section" class="input-wrapper hidden">
+                    <button id="copy-json-link-button" class="input-action-button" title="کپی لینک JSON">
+                        <strong>JSON</strong>
+                    </button>
+                    <input type="text" id="json-link-output" class="input-field" readonly title="برای کپی کلیک کنید">
+                </div>
+            </div>
+        </div>
+        
+        <div class="glass-box p-4 rounded-2xl mb-8" id="search-filter-box">
+            <label for="os-filter-toggle" class="os-toggle-container flex items-center cursor-pointer ml-2">
+                <span class="ml-2 font-semibold">همه</span>
+                <div class="relative">
+                    <input type="checkbox" id="os-filter-toggle" class="os-toggle-checkbox hidden" name="os-filter-toggle">
+                    <div class="os-toggle-switch-bg"></div>
+                    <div class="os-toggle-switch-handle absolute rounded-full shadow transition-transform duration-300"></div>
+                </div>
+            </label>
+            <div class="flex items-center gap-4 w-full">
+                <i class="fas fa-search text-gray-400 text-xl ml-2"></i>
+                <input type="text" id="search-input" class="w-full bg-transparent text-xl focus:outline-none" placeholder="جستجوی نام برنامه ...">
+            </div>
+        </div>
+
+        <div id="app-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
+            
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="android">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FAy-VPN-Plus-510x510.webp" alt="Ay VPN Plus Logo" class="app-logo w-32 h-32 rounded-full mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">Ay VPN Plus</h3>
+                    <span class="mt-1 mb-3 text-sm font-medium tracking-wide text-blue-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-blue-500 ring-1 ring-blue-500/60 backdrop-blur-md">        با هسته Sing-Box</span>
+                <div class="os-icons-list">
+                    <i class="fab fa-android os-android os-main" title="Android"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="ayvpn-plus-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://shammay.ir/AyVPNplus" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="ayvpn-plus" data-name="AyVPN">افزودن</a>
+                    <div id="ayvpn-plus-versions" class="dropdown-menu hidden">
+                        <a href="https://shammay.ir/AyVplusv7a" class="os-android"><i class="fab fa-android"></i>نسخه armeabi-v7a</a>
+                        <a href="https://shammay.ir/AyVplusv8a" class="os-android"><i class="fab fa-android"></i>نسخه arm64-v8a</a>
+                        <a href="https://shammay.ir/AyVplus78" class="os-android"><i class="fab fa-android"></i>نسخه v7a_v8a</a>
+                        <a href="https://shammay.ir/AyVplus86x64" class="os-android"><i class="fab fa-android"></i>نسخه x86-x64</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="android">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2FAy-VPN-Pro-432x432.webp" alt="Ay VPN Pro Logo" class="app-logo w-32 h-32 rounded-full mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">Ay VPN Pro</h3>
+                    <span class="mt-1 mb-3 text-sm font-medium tracking-wide text-red-500 bg-red-500/10 px-3 py-1 rounded-full border border-red-400 ring-1 ring-red-400/60 backdrop-blur-md">        با هسته X-Ray</span>
+                <div class="os-icons-list">
+                    <i class="fab fa-android os-android os-main" title="Android"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="ayvpn-pro-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://shammay.ir/AyVPNpro" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="ayvpn-plus" data-name="AyVPN">افزودن</a>
+                    <div id="ayvpn-pro-versions" class="dropdown-menu hidden">
+                        <a href="https://shammay.ir/AyVprov7a" class="os-android"><i class="fab fa-android"></i>نسخه armeabi-v7a</a>
+                        <a href="https://shammay.ir/AyVprov8a" class="os-android"><i class="fab fa-android"></i>نسخه arm64-v8a</a>
+                        <a href="https://shammay.ir/AyVpro78" class="os-android"><i class="fab fa-android"></i>نسخه v7a_v8a</a>
+                        <a href="https://shammay.ir/AyVprox86" class="os-android"><i class="fab fa-android"></i>نسخه x86</a>
+                        <a href="https://shammay.ir/AyVpro86x64" class="os-android"><i class="fab fa-android"></i>نسخه x86-x64</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="ios">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FV2Box-510x510.webp" alt="V2Box Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">V2Box</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-apple os-apple os-main" title="iOS"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="v2box-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="v2box" data-name="AyVPN">افزودن</a>
+                    <div id="v2box-versions" class="dropdown-menu hidden">
+                        <a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" class="os-apple"><i class="fab fa-apple"></i>نسخه IOS</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="windows,linux,android">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FNekoray-510x510.webp" alt="Nekoray Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">Nekoray</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-windows os-windows os-main" title="Windows"></i>
+                    <i class="fab fa-linux os-linux" title="Linux"></i>
+                    <i class="fab fa-android os-android" title="Android"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="nekoray-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://github.com/MatsuriDayo/nekoray/releases/download/4.0.1/nekoray-4.0.1-2024-12-12-windows64.zip" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="Nekoray" data-name="Nekoray">کپی</a>
+                    <div id="nekoray-versions" class="dropdown-menu hidden">
+                        <a href="https://github.com/MatsuriDayo/nekoray/releases/download/4.0.1/nekoray-4.0.1-2024-12-12-windows64.zip" class="os-windows"><i class="fab fa-windows"></i>Windows x64</a>
+                        <a href="https://github.com/MatsuriDayo/nekoray/releases/download/4.0.1/nekoray-4.0.1-2024-12-12-linux-x64.AppImage" class="os-linux"><i class="fab fa-linux"></i>Linux x64</a>
+                        <a href="https://github.com/MatsuriDayo/nekoray/releases/download/4.0.1/nekoray-4.0.1-2024-12-12-debian-x64.deb" class="os-linux"><i class="fab fa-linux"></i>Debian x64</a>
+                        <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.3.9/NekoBox-1.3.9-arm64-v8a.apk" class="os-android"><i class="fab fa-android"></i>Android Arm64</a>
+                        <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.3.9/NekoBox-1.3.9-armeabi-v7a.apk" class="os-android"><i class="fab fa-android"></i>Android Arm</a>
+                        <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.3.9/NekoBox-1.3.9-x86_64.apk" class="os-android"><i class="fab fa-android"></i>Android x86_64</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="android">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2Fv2rayNG-510x510.webp" alt="v2rayNG Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">v2rayNG</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-android os-android os-main" title="Android"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="v2rayNG-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://github.com/2dust/v2rayNG/releases/download/1.10.9/v2rayNG_1.10.9_universal.apk" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="v2rayNG" data-name="v2rayNG">افزودن</a>
+                    <div id="v2rayNG-versions" class="dropdown-menu hidden">
+                        <a href="https://github.com/2dust/v2rayNG/releases/download/1.10.9/v2rayNG_1.10.9_armeabi-v7a.apk" class="os-android"><i class="fab fa-android"></i>نسخه arm</a>
+                        <a href="https://github.com/2dust/v2rayNG/releases/download/1.10.9/v2rayNG_1.10.9_arm64-v8a.apk" class="os-android"><i class="fab fa-android"></i>نسخه arm64</a>
+                        <a href="https://github.com/2dust/v2rayNG/releases/download/1.10.9/v2rayNG_1.10.9_x86.apk" class="os-android"><i class="fab fa-android"></i>نسخه x86</a>
+                        <a href="https://github.com/2dust/v2rayNG/releases/download/1.10.9/v2rayNG_1.10.9_x86_64.apk" class="os-android"><i class="fab fa-android"></i>نسخه x86-64</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="ios">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FStreisand-510x510.webp" alt="Streisand Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">Streisand</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-apple os-apple os-main" title="iOS"></i>
+                </div>
+                <div class="button-group">
+                     <button class="version-toggle-button" data-app-id="Streisand-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://apps.apple.com/bw/app/streisand/id6450534064" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="Streisand" data-name="Streisand">افزودن</a>
+                     <div id="Streisand-versions" class="dropdown-menu hidden">
+                        <a href="https://apps.apple.com/bw/app/streisand/id6450534064" class="os-apple"><i class="fab fa-apple"></i>نسخه IOS</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="android">
+                <div class="national-badge">🇮🇷</div>
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FAy-VPN-X-510x510.webp" alt="Ay VPN X Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">Ay VPN X</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-android os-android os-main" title="Android"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="ayvpnx-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://shammay.ir/AyVpnX" class="download-button">دانلود</a>
+                    <button class="copy-dropdown-toggle hidden" data-app-id="ayvpnx-copy-menu">کپی</button>
+                    <div id="ayvpnx-copy-menu" class="dropdown-menu copy-dropdown-menu hidden">
+                        <a href="#" data-copy-type="sub"><i class="fas fa-link"></i> SUB</a>
+                        <a href="#" data-copy-type="json"><i class="fas fa-file-code"></i> JSON</a>
+                    </div>
+                    <div id="ayvpnx-versions" class="dropdown-menu hidden">
+                        <a href="https://shammay.ir/AyVpnXv7a" class="os-android"><i class="fab fa-android"></i>نسخه armeabi-v7a</a>
+                        <a href="https://shammay.ir/AyVplusv8a" class="os-android"><i class="fab fa-android"></i>نسخه arm64-v8a</a>
+                        <a href="https://shammay.ir/AyVpnXv7a8" class="os-android"><i class="fab fa-android"></i>نسخه v7a_v8a</a>
+                        <a href="https://shammay.ir/AyVpnXx86x64" class="os-android"><i class="fab fa-android"></i>نسخه x86-x64</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="ios,android">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FNapsternetV-510x510.webp" alt="NapsternetV Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">NapsternetV</h3>
+                 <div class="os-icons-list">
+                    <i class="fab fa-apple os-apple os-main" title="iOS"></i>
+                    <i class="fab fa-android os-android" title="Android"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="NapsternetV-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://apps.apple.com/us/app/npv-tunnel/id1629465476" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="NapsternetV" data-name="AyVPN">افزودن</a>
+                    <div id="NapsternetV-versions" class="dropdown-menu hidden">
+                        <a href="https://play.google.com/store/apps/details?id=com.napsternetlabs.napsternetv&hl=en&gl=US" class="os-android"><i class="fab fa-android"></i>Android</a>
+                        <a href="https://apps.apple.com/us/app/npv-tunnel/id1629465476" class="os-apple"><i class="fab fa-apple"></i>IOS</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="windows,macos,linux">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FV2RayN-510x510.webp" alt="V2rayN Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">V2rayN</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-windows os-windows os-main" title="Windows"></i>
+                    <i class="fab fa-apple os-apple" title="macOS"></i>
+                    <i class="fab fa-linux os-linux" title="Linux"></i>
+                </div>
+                <div class="button-group">
+                     <button class="version-toggle-button" data-app-id="V2rayN-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://github.com/2dust/v2rayN/releases/download/7.13.1/v2rayN-windows-64-SelfContained.zip" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="V2rayN" data-name="V2rayN">کپی</a>
+                     <div id="V2rayN-versions" class="dropdown-menu hidden">
+                        <a href="https://github.com/2dust/v2rayN/releases/download/7.13.1/v2rayN-windows-64-desktop.zip" class="os-windows"><i class="fab fa-windows"></i>Windows x64</a>
+                        <a href="https://github.com/2dust/v2rayN/releases/download/7.13.1/v2rayN-windows-arm64-desktop.zip" class="os-windows"><i class="fab fa-windows"></i>Windows Arm64</a>
+                        <a href="https://github.com/2dust/v2rayN/releases/download/7.13.1/v2rayN-macos-64.dmg" class="os-apple"><i class="fab fa-apple"></i>MacOS x64</a>
+                        <a href="https://github.com/2dust/v2rayN/releases/download/7.13.1/v2rayN-macos-arm64.dmg" class="os-apple"><i class="fab fa-apple"></i>MacOS Arm64</a>
+                        <a href="https://github.com/2dust/v2rayN/releases/download/7.13.1/v2rayN-linux-64.AppImage" class="os-linux"><i class="fab fa-linux"></i>Linux x64</a>
+                        <a href="https://github.com/2dust/v2rayN/releases/download/7.13.1/v2rayN-linux-arm64.AppImage" class="os-linux"><i class="fab fa-linux"></i>Linux Arm64</a>
+                        <a href="https://github.com/lowercase78/V2RayN-PRO/releases/download/V2RayN-PROV1.9/V2rayN-Pro.zip" class="os-windows"><i class="fab fa-windows"></i>V2rayN-Pro</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="android">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FAy-VPN-Premium-510x510.webp" alt="Ay VPN Premium Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">Ay VPN Premium</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-android os-android os-main" title="Android"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="Ay-VPN-Premium-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://shammay.ir/AyVPNpremium" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="Ay-VPN-Premium" data-name="Ay-VPN-Premium">کپی محتوا</a>
+                    <div id="Ay-VPN-Premium-versions" class="dropdown-menu hidden">
+                        <a href="https://shammay.ir/AyVPNpremium" class="os-android"><i class="fab fa-android"></i>نسخه arm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="windows,macos,linux,android">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FHiddify-510x510.webp" alt="Hiddify Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">Hiddify</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-windows os-windows os-main" title="Windows"></i>
+                    <i class="fab fa-apple os-apple" title="macOS"></i>
+                    <i class="fab fa-linux os-linux" title="Linux"></i>
+                    <i class="fab fa-android os-android" title="Android"></i>
+                </div>
+                <div class="button-group">
+                     <button class="version-toggle-button" data-app-id="Hiddify-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://github.com/hiddify/hiddify-next/releases/latest/download/Hiddify-Windows-Portable-x64.zip" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="Hiddify" data-name="Hiddify">افزودن</a>
+                     <div id="Hiddify-versions" class="dropdown-menu hidden">
+                        <a href="https://github.com/hiddify/hiddify-next/releases/download/v2.5.7/Hiddify-Windows-Setup-x64.exe" class="os-windows"><i class="fab fa-windows"></i>Windows x64</a>
+                        <a href="https://github.com/hiddify/hiddify-next/releases/download/v2.5.7/Hiddify-MacOS-Installer.pkg" class="os-apple"><i class="fab fa-apple"></i>macOS</a>
+                        <a href="https://github.com/hiddify/hiddify-next/releases/download/v2.5.7/Hiddify-Debian-x64.deb" class="os-linux"><i class="fab fa-linux"></i>Linux x64</a>
+                        <a href="https://github.com/hiddify/hiddify-next/releases/download/v2.5.7/Hiddify-Android-universal.apk" class="os-android"><i class="fab fa-android"></i>Android</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="windows,macos,linux,android">
+                <img src="https://karing.app/en/img/logo.png" alt="Karing Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">Karing</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-windows os-windows os-main" title="Windows"></i>
+                    <i class="fab fa-apple os-apple" title="iOS"></i>
+                    <i class="fab fa-android os-android" title="Android"></i>
+                </div>
+                <div class="button-group">
+                     <button class="version-toggle-button" data-app-id="Karing-versions"><i class="fas fa-chevron-up"></i></button>
+                    <a href="https://dot.karing.app/client.html?tag=windows-installer-stable" class="download-button">دانلود</a>
+                    <a href="#" class="add-button hidden" data-app="Karing" data-name="Karing">افزودن</a>
+                     <div id="Karing-versions" class="dropdown-menu hidden">
+                        <a href="https://dot.karing.app/client.html?tag=android-stable" class="os-android"><i class="fab fa-android"></i>Android</a>
+                        <a href="https://apps.apple.com/us/app/karing/id6472431552" class="os-apple"><i class="fab fa-apple"></i>IOS</a>
+                        <a href="https://dot.karing.app/client.html?tag=macos-stable" class="os-apple"><i class="fab fa-apple"></i>macOS</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="android,ios">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2FHapp-510x510.webp" alt="Happ Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">Happ</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-android os-android os-main" title="Android"></i>
+                    <i class="fab fa-apple os-apple os-main" title="iOS"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="happ-versions"><i class="fas fa-chevron-up"></i></button>
+                    <button class="control-toggle-button" data-app-id="happ-control-menu"><i class="fas fa-sliders-h"></i></button>
+                    <button class="download-toggle-button download-button" data-app-id="happ-download-menu"><i class="fas fa-download"></i></button>
+                    <a href="#" class="add-button hidden" data-app="happ" data-name="Happ">افزودن</a>
+                    <div id="happ-download-menu" class="dropdown-menu hidden">
+                         <a href="https://play.google.com/store/apps/details?id=com.happproxy" class="os-android"><i class="fab fa-android text-green-400"></i>Android</a>
+                        <a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" class="os-apple"><i class="fab fa-apple"></i>iOS</a>
+                    </div>
+                    <div id="happ-versions" class="dropdown-menu hidden">
+                        <a href="https://play.google.com/store/apps/details?id=com.happproxy" class="os-android"><i class="fab fa-android"></i>Android</a>
+                        <a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" class="os-apple"><i class="fab fa-apple"></i>iOS</a>
+                    </div>
+                    <div id="happ-control-menu" class="dropdown-menu hidden">
+                        <a href="happ://connect" class="text-green-400"><i class="fas fa-play"></i>اتصال</a>
+                        <a href="happ://disconnect" class="text-red-400"><i class="fas fa-stop"></i>قطع</a>
+                        <a href="happ://toggle"><i class="fas fa-retweet"></i>تغییر وضعیت</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-card glass-box p-6 rounded-2xl flex flex-col items-center text-center" data-os-list="android,ios">
+                <img src="https://ayvpn.s3.ir-thr-at1.arvanstorage.ir/Clients%2FLOGOS%2F510x510.webp%2Fv2rayTun-510x510.webp" alt="v2rayTun Logo" class="app-logo w-32 h-32 rounded-2xl mb-4 object-contain">
+                <h3 class="text-xl font-semibold mb-2 text-primary app-name">v2rayTun</h3>
+                <div class="os-icons-list">
+                    <i class="fab fa-android os-android os-main" title="Android"></i>
+                    <i class="fab fa-apple os-apple os-main" title="iOS"></i>
+                </div>
+                <div class="button-group">
+                    <button class="version-toggle-button" data-app-id="v2raytun-versions"><i class="fas fa-chevron-up"></i></button>
+                    <button class="control-toggle-button" data-app-id="v2raytun-control-menu"><i class="fas fa-sliders-h"></i></button>
+                    <button class="download-toggle-button download-button" data-app-id="v2raytun-download-menu"><i class="fas fa-download"></i></button>
+                    <a href="#" class="add-button hidden" data-app="v2raytun" data-name="v2rayTun">افزودن</a>
+                    <div id="v2raytun-download-menu" class="dropdown-menu hidden">
+                        <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="os-android"><i class="fab fa-android text-green-400"></i>Android</a>
+                        <a href="https://apps.apple.com/us/app/v2raytun/id6476628951" class="os-apple"><i class="fab fa-apple"></i>iOS</a>
+                    </div>
+                    <div id="v2raytun-versions" class="dropdown-menu hidden">
+                        <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="os-android"><i class="fab fa-android"></i>Android</a>
+                        <a href="https://apps.apple.com/us/app/v2raytun/id6476628951" class="os-apple"><i class="fab fa-apple"></i>iOS</a>
+                    </div>
+                    <div id="v2raytun-control-menu" class="dropdown-menu hidden">
+                        <a href="v2raytun://control/start" class="text-green-400"><i class="fas fa-play"></i>شروع</a>
+                        <a href="v2raytun://control/stop" class="text-red-400"><i class="fas fa-stop"></i>توقف</a>
+                        <a href="v2raytun://control/restart" class="text-yellow-400"><i class="fas fa-redo"></i>راه‌اندازی مجدد</a>
+                        <a href="v2raytun://control/update"><i class="fas fa-sync-alt"></i>بروزرسانی</a>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        
+        <div class="glass-box p-6 rounded-2xl mt-12 text-center">
+            <p id="location-info-text" class="text-xl font-semibold text-primary">
+                <i class="fas fa-spinner fa-spin mr-2"></i> در حال بارگذاری اطلاعات IP شما...
+            </p>
+        </div>
+        
+        <div class="glass-box p-6 rounded-2xl mt-12 text-center">
+            <h2 class="text-3xl font-extrabold mb-4 text-primary">اینترنت گردی آزاد …</h2>
+             <div id="r4-widget-form"></div>
+       </div>
+
+        <div class="glass-box p-6 rounded-2xl mt-8 text-center">
+            <h2 class="text-3xl font-extrabold mb-6 text-primary">تست سرعت اینترنت</h2>
+            <div class="flex justify-center items-center gap-2 mb-6 p-1 rounded-full bg-gray-700 max-w-sm mx-auto">
+                <button class="speedtest-tab active" data-target="speedtest-iframe-1">OpenSpeedTest</button>
+                <button class="speedtest-tab" data-target="speedtest-iframe-2">Fast.com</button>
+            </div>
+            <div id="speedtest-iframe-1" class="speedtest-container">
+                <iframe class="w-full h-full border-0" src="https://openspeedtest.com/speedtest" title="ابزار تست سرعت OpenSpeedTest"></iframe>
+            </div>
+            <div id="speedtest-iframe-2" class="speedtest-container hidden">
+                <iframe class="w-full h-full border-0" src="https://fast.com" title="ابزار تست سرعت Fast.com"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-bg py-6 px-6 md:px-12 text-center text-secondary">
+        <div class="container mx-auto flex flex-col items-center">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="https://shammay.ir" target="_blank" aria-label="Website" class="social-icon website"><i class="fas fa-globe"></i></a>
+                <a href="https://t.me/Ay_VPN" target="_blank" aria-label="Telegram" class="social-icon telegram"><i class="fab fa-telegram"></i></a>
+                <a href="https://instagram.com/Ay_VPN" target="_blank" aria-label="Instagram" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/shammay-PC" target="_blank" aria-label="Facebook" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://github.com/shammay-PC" target="_blank" aria-label="GitHub" class="social-icon github"><i class="fab fa-github"></i></a>
+            </div>
+            <p>© تمامی حقوق مادی و معنوی توسط کمپانی آی تکنیک محفوظ می باشد.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = themeToggle.querySelector('.fa-moon');
+        const sunIcon = themeToggle.querySelector('.fa-sun');
+        
+        function updateIcons(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'inline-block';
+            } else {
+                moonIcon.style.display = 'inline-block';
+                sunIcon.style.display = 'none';
+            }
+        }
+        
+        function setInitialTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            let theme;
+            if (savedTheme) {
+                theme = savedTheme;
+            } else {
+                theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            htmlElement.classList.remove('light', 'dark');
+            htmlElement.classList.add(theme);
+            updateIcons(theme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const newTheme = htmlElement.classList.contains('light') ? 'dark' : 'light';
+            htmlElement.classList.remove('light', 'dark');
+            htmlElement.classList.add(newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme);
+        });
+        
+        // Particle creation script
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            const particleCount = 50;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Show copy toast message
+        function showToast(element, message, isError = false) {
+            let toast = element.querySelector('.copy-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.className = 'copy-toast';
+                element.style.position = 'relative';
+                element.appendChild(toast);
+            }
+            
+            toast.textContent = message;
+            toast.classList.toggle('error-toast', isError);
+            
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // Copy text to clipboard
+        async function copyToClipboard(text, elementToShowToast, message = 'کپی شد') {
+            if (!text || !text.trim()) return;
+            try {
+                await navigator.clipboard.writeText(text);
+                if(elementToShowToast) showToast(elementToShowToast, message, false);
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                if(elementToShowToast) showToast(elementToShowToast, 'خطا در کپی', true);
+            }
+        }
+
+        // Fetch and copy subscription content
+        async function fetchAndCopySubContent(url, button) {
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            button.disabled = true;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                const content = await response.text();
+                await copyToClipboard(content, button.closest('.app-card'), 'محتوای لینک کپی شد');
+            } catch (error) {
+                console.error('Fetch error:', error);
+                showToast(button.closest('.app-card'), 'خطا در دریافت محتوا (CORS)', true);
+            } finally {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }
+        }
+
+        const subscriptionInput = document.getElementById('subscription-url');
+        const addButtons = document.querySelectorAll('.add-button');
+        const noAddSupportApps = ['Nekoray', 'V2rayN'];
+        const defaultSubName = '⚡AyVPN🌙';
+
+// تابع هوشمند برای تنظیم تگ لینک بر اساس نوع برنامه
+function formatSubscriptionUrl(url, appType) {
+    if (!url) return '';
+    
+    // تعیین نوع جداکننده تگ برای برنامه مورد نظر
+    // لیست برنامه‌هایی که از &name= استفاده می‌کنند
+    const lowerAppType = appType ? appType.toLowerCase() : '';
+    // اصلاح 1: حذف 'karing' از لیست useNameParam
+    const useNameParam = ['ayvpn-plus', 'v2box', 'hiddify', 'v2raytun'].some(k => lowerAppType.includes(k));
+    const targetSeparator = useNameParam ? '&name=' : '#';
+    
+    // 1. استخراج آدرس اصلی و تگ فعلی (اگر وجود داشته باشد)
+    let coreUrl = url;
+    let tag = '';
+    
+    if (coreUrl.includes('&name=')) {
+        const parts = coreUrl.split('&name=');
+        coreUrl = parts[0];
+        tag = decodeURIComponent(parts[1]); // **اصلاح:** برای جلوگیری از Double Encoding، تگ را decode می‌کنیم
+    } else if (coreUrl.includes('#')) {
+        const parts = coreUrl.split('#');
+        coreUrl = parts[0];
+        tag = decodeURIComponent(parts[1]); // **اصلاح:** برای جلوگیری از Double Encoding، تگ را decode می‌کنیم
+    }
+    
+    // 2. اگر تگی وجود نداشت، ساخت تگ از نام کاربری انتهای لینک
+    if (!tag) {
+        // حذف اسلش انتهایی احتمالی
+        let tempUrl = coreUrl.endsWith('/') ? coreUrl.slice(0, -1) : coreUrl;
+        const segments = tempUrl.split('/');
+        const userUuid = segments[segments.length - 1];
+        if (userUuid && !userUuid.includes('.')) { 
+            tag = `⚡${userUuid}🌙`;
+        } else {
+            // توجه: از متغیر سراسری defaultSubName استفاده می‌کند
+            tag = defaultSubName;
+        }
+    }
+    
+    // 3. بازسازی لینک با جداکننده صحیح
+    if (useNameParam) {
+        // برای V2Box و AyVPN Plus (گروه &name=)، فقط لینک تمیز را برمی‌گردانیم
+        return coreUrl; 
+    } else if (tag) {
+        // برای برنامه‌های #، لینک را با تگ ترکیب می‌کنیم
+        return `${coreUrl}#${tag}`;
+    }
+    
+    // اگر هیچ تگی (حتی پیش‌فرض) تولید نشد و useNameParam هم false بود
+    return coreUrl;
+}
+// تابع ایجاد لینک V2Box با base64 (اصلاح برای استخراج صحیح نام)
+function createV2BoxLink(url, appType) {
+    // formatSubscriptionUrl اکنون لینک تمیز را برمی‌گرداند (Core URL)
+    const coreUrl = formatSubscriptionUrl(url, appType); 
+
+    // **استخراج نام/تگ با منطق مشابه updateAddButtons**
+    let nameToUse = '';
+    let tempUrl = url;
+
+    // 1. استخراج نام سفارشی از URL اصلی 
+    // از آنجایی که formatSubscriptionUrl به تازگی decode شده، باید مجدداً منطق را اعمال کنیم
+    if (tempUrl.includes('&name=')) {
+        nameToUse = decodeURIComponent(tempUrl.split('&name=')[1]); // **اصلاح:** decodeURIComponent دوباره اضافه شد
+    } else if (tempUrl.includes('#')) {
+        nameToUse = decodeURIComponent(tempUrl.split('#')[1]); // **اصلاح:** decodeURIComponent دوباره اضافه شد
+    }
+
+    // 2. ساخت تگ پیش‌فرض در صورت خالی بودن
+    if (!nameToUse) {
+        let tempUrlCleaned = coreUrl.endsWith('/') ? coreUrl.slice(0, -1) : coreUrl;
+        const segments = tempUrlCleaned.split('/');
+        const userUuid = segments[segments.length - 1];
+
+        if (userUuid && !userUuid.includes('.')) { 
+            nameToUse = `⚡${userUuid}🌙`;
+        } else {
+            nameToUse = defaultSubName;
+        }
+    }
+    
+    const name = nameToUse; // نام اکنون Decoded (خام) است
+
+    try {
+        const base64Encoded = btoa(coreUrl);
+        // تزریق نام Decoded شده به Deep Link برنامه V2Box، با encode صحیح
+        return `v2box://install-sub?url=${base64Encoded}&name=${encodeURIComponent(name)}`;
+    } catch (e) {
+        // در صورت خطا، بدون Base64 encoding لینک را اضافه می‌کند
+        return `v2box://install-sub?url=${encodeURIComponent(coreUrl)}&name=${encodeURIComponent(name)}`;
+    }
+}
+// تابع اصلی برای تولید لینک نهایی (جایگزین تابع قبلی)
+function getFinalLinkForApp(url, appType) {
+     if (!url.startsWith('http')) {
+        // اگر لینک http نیست (مثلاً vless://)، منطق ساده‌تر است
+        return url; // معمولاً در این حالت تگ‌گذاری پیچیده نیاز نیست یا قبلاً انجام شده
+     }
+      
+     // فرمت‌دهی هوشمند لینک
+     const finalUrl = formatSubscriptionUrl(url, appType);
+     return finalUrl;
+}
+
+        function updateJsonConverter(subUrl) {
+            const converterSection = document.getElementById('json-converter-section');
+            const jsonOutput = document.getElementById('json-link-output');
+            
+            if (subUrl) {
+                let jsonUrl = '';
+                // سناریو 1: تبدیل ساب‌دامنه‌های sub و my به json
+                if (subUrl.includes('://sub.shammay.ir/') || subUrl.includes('://my.shammay.ir/')) {
+                    jsonUrl = subUrl.replace('://sub.', '://json.').replace('://my.', '://json.');
+                } 
+                // سناریو 2: تبدیل مسیر /sub/ به /json/ (برای پنل‌های پورتی)
+                else if (subUrl.includes('/sub/')) {
+                    jsonUrl = subUrl.replace('/sub/', '/json/');
+                }
+
+                if (jsonUrl) {
+                    jsonOutput.value = jsonUrl;
+                    converterSection.classList.remove('hidden');
+                } else {
+                     converterSection.classList.add('hidden');
+                }
+            } else {
+                converterSection.classList.add('hidden');
+            }
+        }
+        
+        function updateButtonLayouts(subURL) {
+            document.querySelectorAll('.button-group').forEach(group => {
+                const addButton = group.querySelector('.add-button, .copy-dropdown-toggle');
+                const downloadButton = group.querySelector('.download-button, .download-toggle-button');
+                if (!addButton || !downloadButton) return;
+                
+                if (subURL) {
+                    addButton.style.flexGrow = '1';
+                    downloadButton.style.flexGrow = '1';
+                } else {
+                    addButton.style.flexGrow = '1';
+                    downloadButton.style.flexGrow = '1.5';
+                }
+            });
+        }
+
+function updateAddButtons() {
+            const subURL = subscriptionInput.value.trim();
+            updateButtonLayouts(subURL); 
+
+            addButtons.forEach(button => {
+                const appType = button.dataset.app;
+                
+                if (subURL) {
+                    button.classList.remove('hidden');
+                    
+                    // محاسبه لینک نهایی بر اساس نوع برنامه (لینک تمیز یا لینک با تگ #)
+                    const formattedSubUrl = getFinalLinkForApp(subURL, appType);
+
+                    // **منطق استخراج نام/تگ (برای استفاده در Deep Link)**
+                    let deepLinkName = '';
+                    let tempUrl = subURL;
+
+                    // 1. استخراج نام سفارشی از URL اصلی
+                    if (tempUrl.includes('&name=')) {
+                        deepLinkName = decodeURIComponent(tempUrl.split('&name=')[1]);
+                    } else if (tempUrl.includes('#')) {
+                        deepLinkName = decodeURIComponent(tempUrl.split('#')[1]);
+                    }
+
+                    // 2. ساخت تگ پیش‌فرض در صورت خالی بودن
+                    if (!deepLinkName) {
+                        // از formattedSubUrl (که اکنون لینک تمیز است) برای استخراج UUID استفاده می‌کنیم.
+                        let tempUrlCleaned = formattedSubUrl.endsWith('/') ? formattedSubUrl.slice(0, -1) : formattedSubUrl;
+                        const segments = tempUrlCleaned.split('/');
+                        const userUuid = segments[segments.length - 1];
+
+                        if (userUuid && !userUuid.includes('.')) { 
+                            deepLinkName = `⚡${userUuid}🌙`;
+                        } else {
+                            deepLinkName = defaultSubName;
+                        }
+                    }
+                    // **پایان منطق استخراج نام**
+
+                    if (appType === 'Ay-VPN-Premium') {
+                        button.textContent = 'کپی محتوا';
+                        button.href = '#';
+                        button.onclick = (e) => { e.preventDefault(); fetchAndCopySubContent(subURL, button); };
+                    } else if (noAddSupportApps.includes(appType)) {
+                        button.textContent = 'کپی';
+                        button.href = '#';
+                        button.onclick = (e) => { e.preventDefault(); copyToClipboard(formattedSubUrl, button.closest('.app-card'), 'لینک اشتراک کپی شد'); };
+                    } else {
+                        button.textContent = 'افزودن';
+                        button.onclick = null;
+                        let deepLink = '#';
+                        
+                        // تولید Deep Link با استفاده از لینک فرمت شده و تگ استخراج شده
+                        
+                        // پارامتر نام برای Deep Link
+                        const nameParam = `&name=${encodeURIComponent(deepLinkName)}`;
+
+                        if (appType === 'ayvpn-plus') deepLink = `sn://subscription?url=${encodeURIComponent(formattedSubUrl)}${nameParam}`;
+                        else if (appType === 'v2box') deepLink = createV2BoxLink(subURL, appType); // V2Box منطق خاص خود را دارد
+                        else if (appType === 'v2rayNG') deepLink = `v2rayng://install-config?url=${encodeURIComponent(formattedSubUrl)}`;
+                        else if (appType === 'Streisand') deepLink = `streisand://import/${formattedSubUrl}`;
+                        else if (appType === 'Hiddify') deepLink = `hiddify://install-config?url=${encodeURIComponent(formattedSubUrl)}${nameParam}`; // **اضافه شدن نام**
+                        else if (appType === 'Karing') deepLink = `karing://install-config?url=${encodeURIComponent(formattedSubUrl)}`;
+                        else if (appType === 'NapsternetV') deepLink = `npv://install-sub?url=${encodeURIComponent(formattedSubUrl)}`;
+                        else if (appType === 'happ') deepLink = `happ://add/${formattedSubUrl}`;
+                        else if (appType === 'v2raytun') deepLink = `v2raytun://install-config?url=${encodeURIComponent(formattedSubUrl)}${nameParam}`; // **اصلاح فرمت برای ارسال نام**
+                        
+                        button.href = deepLink;
+                    }
+                } else {
+                    button.classList.add('hidden');
+                }
+            });
+            
+            const ayvpnxCopyToggle = document.querySelector('.copy-dropdown-toggle');
+            if (ayvpnxCopyToggle) {
+                if (subURL) ayvpnxCopyToggle.classList.remove('hidden');
+                else ayvpnxCopyToggle.classList.add('hidden');
+            }
+        }
+        
+        function handleInputChange() {
+            const subURL = subscriptionInput.value.trim();
+            updateAddButtons();
+            updateJsonConverter(subURL);
+        }
+
+        async function pasteFromClipboard(isAutomatic = false) {
+            try {
+                if(!navigator.clipboard || !navigator.clipboard.readText) { throw new Error('Clipboard API not supported'); }
+                const text = await navigator.clipboard.readText();
+                let shouldPaste = false;
+                if (isAutomatic) {
+                    if (text && text.includes('shammay')) { shouldPaste = true; }
+                } else {
+                    if (text && (text.startsWith('http://') || text.startsWith('https://'))) { shouldPaste = true; }
+                }
+                if (shouldPaste) {
+                    subscriptionInput.value = text;
+                    handleInputChange();
+                }
+            } catch (err) { console.error('Failed to read clipboard: ', err); }
+        }
+
+        // === Swiper Slider Logic (New Carousel) ===
+        // Initialize Swiper after DOMContentLoaded
+        let swiper = null;
+
+        function initializeSwiper() {
+            // Check if Swiper is already initialized
+            if (swiper) {
+                swiper.destroy(true, true);
+            }
+            
+            swiper = new Swiper('#banner-slider', {
+                effect: 'cube', // Enable 3D Cube effect
+                grabCursor: true,
+                cubeEffect: {
+                    shadow: true,
+                    slideShadows: true,
+                    shadowOffset: 20,
+                    shadowScale: 0.94,
+                },
+                loop: true,
+                autoplay: {
+                    delay: 1000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
+
+        function getOS() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) return 'android';
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) return 'ios';
+            if (/Win/i.test(userAgent)) return 'windows';
+            if (/Mac/i.test(userAgent)) return 'macos';
+            if (/Linux/i.test(userAgent)) return 'linux';
+            return 'other';
+        }
+
+        // تابع فیلتر کارت‌های برنامه (اصلاح شده طبق درخواست جدید)
+        function filterAppCards(searchQuery, filterActive, currentOS) {
+            const appCards = document.querySelectorAll('.app-card');
+            
+            appCards.forEach(card => {
+                const appName = card.querySelector('.app-name').textContent.toLowerCase();
+                const osList = card.dataset.osList ? card.dataset.osList.split(',') : [];
+                
+                const matchesSearch = searchQuery === '' || appName.includes(searchQuery.toLowerCase());
+                const matchesOS = osList.includes(currentOS);
+                
+                // منطق نمایش و عدم نمایش
+                if (searchQuery !== '') {
+                    // اگر کاربر در حال جستجو است، فیلتر جستجو اولویت دارد
+                    card.style.display = matchesSearch ? 'flex' : 'none';
+                    card.classList.remove('highlight-os-match'); // حذف هایلایت در جستجو
+                } else {
+                    if (filterActive) {
+                        // حالت "سیستم عامل فعلی" (فیلتر روشن)
+                        // فقط برنامه‌های مطابق سیستم عامل را نشان بده
+                        card.style.display = matchesOS ? 'flex' : 'none';
+                        card.classList.remove('highlight-os-match'); // بوردر عادی باشد
+                    } else {
+                        // حالت "همه" (فیلتر خاموش)
+                        // همه برنامه‌ها نمایش داده می‌شوند
+                        card.style.display = 'flex';
+                        // اگر برنامه با سیستم عامل فعلی یکی است، هایلایت شود (بوردر قرمز)
+                        if (matchesOS) {
+                            card.classList.add('highlight-os-match');
+                        } else {
+                            card.classList.remove('highlight-os-match');
+                        }
+                    }
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            setInitialTheme();
+            createParticles();
+            initializeSwiper(); // Initialize the new Swiper slider
+
+            // Pause slider on hover
+            const slider = document.getElementById('banner-slider');
+            slider.addEventListener('mouseenter', stopSlider);
+            slider.addEventListener('mouseleave', startSlider);
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const subLinkFromUrl = urlParams.get('sub');
+            if (subLinkFromUrl) {
+                subscriptionInput.value = subLinkFromUrl;
+            } else {
+                pasteFromClipboard(true);
+            }
+            handleInputChange();
+
+            document.getElementById('paste-from-clipboard-button').addEventListener('click', () => pasteFromClipboard(false));
+            
+            const jsonOutput = document.getElementById('json-link-output');
+            const jsonCopyButton = document.getElementById('copy-json-link-button');
+            const jsonWrapper = jsonOutput.closest('.input-wrapper');
+            jsonOutput.addEventListener('click', () => {
+                copyToClipboard(jsonOutput.value, jsonWrapper, 'لینک JSON کپی شد');
+            });
+            jsonCopyButton.addEventListener('click', () => {
+                copyToClipboard(jsonOutput.value, jsonWrapper, 'لینک JSON کپی شد');
+            });
+
+            document.querySelectorAll('.app-card').forEach(card => {
+                const logo = card.querySelector('.app-logo');
+                const name = card.querySelector('.app-name');
+                const button = card.querySelector('.add-button');
+                if (!button) return;
+                
+                const clickHandler = () => {
+                    const subURL = subscriptionInput.value.trim();
+                    if (!subURL) return;
+
+                    const appType = button.dataset.app; 
+                    const formattedUrl = getFinalLinkForApp(subURL, appType);
+
+                    if (appType === 'ayvpn-plus') {
+                        // برای AyVPN Plus، معمولاً لینک خام با تگ صحیح را کپی می‌کنیم چون دیپ لینک در دکمه اصلی است
+                        copyToClipboard(formattedUrl, card, 'لینک افزودن کپی شد');
+                    } else if (appType){
+                        copyToClipboard(formattedUrl, card, 'لینک اشتراک کپی شد');
+                    }
+                };
+                if (logo) logo.addEventListener('click', clickHandler);
+                if (name) name.addEventListener('click', clickHandler);
+            });
+            
+            const ayvpnxCopyToggle = document.querySelector('.copy-dropdown-toggle');
+            // === Ay VPN X Copy Button Logic START (UPDATED) ===
+            if (ayvpnxCopyToggle) {
+                ayvpnxCopyToggle.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    document.getElementById('ayvpnx-copy-menu').classList.toggle('hidden');
+                });
+
+                document.querySelectorAll('#ayvpnx-copy-menu a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault(); 
+                        e.stopPropagation();
+                        
+                        const copyType = e.currentTarget.dataset.copyType; // Gets 'sub' or 'json'
+                        const subURL = subscriptionInput.value.trim();
+                        if (!subURL) return; 
+
+                        let textToCopy = subURL;
+                        
+                        if (copyType === 'json') {
+                             // منطق جدید JSON برای Ay VPN X
+                             let jsonUrl = subURL;
+                             if (subURL.includes('://sub.shammay.ir/') || subURL.includes('://my.shammay.ir/')) {
+                                jsonUrl = subURL.replace('://sub.', '://json.').replace('://my.', '://json.');
+                             } else if (subURL.includes('/sub/')) {
+                                jsonUrl = subURL.replace('/sub/', '/json/');
+                             }
+                             textToCopy = jsonUrl;
+                        } else {
+                            // اگر کپی معمولی بود، فرمت صحیح با تگ (معمولاً # برای Ay VPN X) اعمال شود
+                            textToCopy = formatSubscriptionUrl(subURL, 'Ay VPN X'); 
+                        }
+                        
+                        copyToClipboard(textToCopy, e.currentTarget.closest('.app-card'), `لینک ${copyType.toUpperCase()} کپی شد`);
+                        document.getElementById('ayvpnx-copy-menu').classList.add('hidden');
+                    });
+                });
+            }
+            // === Ay VPN X Copy Button Logic END ===
+            
+            // === OS Filter Logic START (Updated for Default ON) ===
+            const osFilterToggle = document.getElementById('os-filter-toggle');
+            const currentOS = getOS();
+            
+            // تنظیم پیش‌فرض روی حالت فعال (سیستم عامل فعلی)
+            osFilterToggle.checked = true; 
+            
+            // Event listener for OS filter toggle
+            osFilterToggle.addEventListener('change', () => {
+                const isFilterActive = osFilterToggle.checked; 
+                const searchQuery = document.getElementById('search-input').value.trim();
+                filterAppCards(searchQuery, isFilterActive, currentOS);
+                
+                // آپدیت متن دکمه
+                const filterLabel = document.querySelector('.os-toggle-container span');
+                filterLabel.textContent = isFilterActive ? '✔️' : 'همه';
+            });
+
+            // Initial Filter Application
+            const filterLabel = document.querySelector('.os-toggle-container span');
+            filterLabel.textContent = ''; // متن پیش‌فرض
+            
+            const initialFilterActive = osFilterToggle.checked;
+            const initialSearchQuery = document.getElementById('search-input').value.trim();
+            filterAppCards(initialSearchQuery, initialFilterActive, currentOS);
+            // === OS Filter Logic END ===
+            
+            // === Search Input Listener ===
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', () => {
+                const searchQuery = searchInput.value.trim();
+                const isFilterActive = osFilterToggle.checked;
+                filterAppCards(searchQuery, isFilterActive, currentOS);
+            });
+        });
+
+        document.querySelectorAll('.version-toggle-button, .control-toggle-button, .download-toggle-button').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const dropdownId = this.dataset.appId;
+                const dropdownMenu = document.getElementById(dropdownId);
+                const isHidden = dropdownMenu.classList.contains('hidden');
+                document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.add('hidden'));
+                if (isHidden) dropdownMenu.classList.remove('hidden');
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            const isToggleButton = event.target.closest('.version-toggle-button, .control-toggle-button, .download-toggle-button, .copy-dropdown-toggle');
+            if (!isToggleButton) {
+                document.querySelectorAll('.dropdown-menu, #ayvpnx-context-menu').forEach(menu => menu.classList.add('hidden'));
+            }
+        });
+
+		async function fetchLocationInfo() {
+			const locationDiv = document.getElementById('location-info-text');
+
+			// تابع برای به‌روزرسانی محتوای صفحه
+			const updateDOM = (data) => {
+				// بررسی می‌کند که آیا آبجکت داده معتبر است یا خیر
+				if (!data) return;
+
+				// سازگار با APIهای مختلف که IP را در فیلد 'ip' یا 'query' برمی‌گردانند
+				const ip = data.ip || data.query || '0.0.0.0';
+				
+				// پشتیبانی از هر دو کلید country_code و countryCode
+				const countryCode = data.country_code || data.countryCode || '';
+				
+				let flag = '';
+				if (countryCode) {
+					// تبدیل کد کشور دو حرفی به ایموجی پرچم
+					flag = countryCode.toUpperCase().split('').map(char => 
+						String.fromCodePoint(char.charCodeAt(0) + 127397)
+					).join('');
+				}
+				
+				locationDiv.innerHTML = `آدرس IP شما: <span dir="ltr" class="font-mono">${ip}</span> ${flag}`;
+			};
+
+			// لیستی از APIها به ترتیب اولویت (همگی بدون نیاز به کلید)
+			const apiEndpoints = [
+				'http://ip-api.com/json/',
+				'https://ipwhois.app/json/',
+				'https://ipapi.co/json/'
+			];
+
+			let success = false; // یک پرچم برای بررسی موفقیت‌آمیز بودن درخواست
+
+			// حلقه برای تلاش به ترتیب روی هر API
+			for (const url of apiEndpoints) {
+				try {
+					const response = await fetch(url);
+					if (!response.ok) {
+						// اگر پاسخ موفقیت‌آمیز نبود، یک خطا ایجاد کن تا به catch برود
+						throw new Error(`API request failed with status ${response.status}`);
+					}
+					const data = await response.json();
+					updateDOM(data);
+					success = true; // درخواست موفق بود
+					console.log(`Successfully fetched IP info from: ${url}`);
+					break; // اگر موفق بود، از حلقه خارج شو و به سراغ API بعدی نرو
+				} catch (error) {
+					console.warn(`Failed to fetch from ${url}. Trying next fallback...`, error.message);
+				}
+			}
+
+			// اگر هیچ‌کدام از APIها پاسخگو نبودند
+			if (!success) {
+				console.error('All IP APIs failed.');
+				locationDiv.textContent = 'امکان دریافت اطلاعات IP وجود ندارد.';
+			}
+		}
+
+		// فراخوانی تابع برای اجرا
+        fetchLocationInfo();
+        
+        const speedtestTabs = document.querySelectorAll('.speedtest-tab');
+        const speedtestContainers = document.querySelectorAll('.speedtest-container');
+        speedtestTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                speedtestTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                speedtestContainers.forEach(c => c.classList.add('hidden'));
+                document.getElementById(tab.dataset.target).classList.remove('hidden');
+            });
+        });
+        
+        // تابع‌های کنترل اسلایدر
+        function stopSlider() {
+            if (swiper && swiper.autoplay && swiper.autoplay.running) {
+                swiper.autoplay.stop();
+            }
+        }
+        
+        function startSlider() {
+            if (swiper && swiper.autoplay && !swiper.autoplay.running) {
+                swiper.autoplay.start();
+            }
+        }
+    </script>
+	
+<script>
+  (function(d,t) {
+    var BASE_URL="https://app.gapify.ai";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.gapifySDK.run({
+        websiteToken: 'p7e3qdSe4mfMWZ3ETKrS4Vgd',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script>
+
+</body>
+
+</html>
+
